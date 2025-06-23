@@ -27,4 +27,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: xianwei2022/linAcc:latest
+          tags: xianwei2022/linacc:latest
