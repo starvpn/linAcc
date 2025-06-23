@@ -5,8 +5,7 @@ WORKDIR /src
 
 # cache dependencies
 COPY go.mod ./
-# copy go.sum if present
-COPY go.sum ./
+# download dependencies (go.sum will be generated if needed)
 RUN go mod download
 
 # copy source
