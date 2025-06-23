@@ -1,15 +1,11 @@
 # linAcc
 
-本项目演示如何使用 [Echo](https://echo.labstack.com) Web 框架以及 [Layui](https://www.layui.com/) 页面框架，构建一个简单的 Go 应用。
+本项目演示如何使用标准库 `net/http` 以及 [Layui](https://www.layui.com/) 页面框架，构建一个简单的 Go 应用。
 
 ## 快速开始
 
 1. **安装依赖**
-   ```bash
-   go mod tidy
-   ```
-   如果执行失败，可能是由于当前环境无法连接外网下载依赖。
-   在这种情况下，直接通过 Docker 构建将自动下载依赖并生成 `go.sum` 文件。
+   该示例仅依赖 Go 标准库，无需额外下载依赖。
 
 2. **启动服务器**
    ```bash
