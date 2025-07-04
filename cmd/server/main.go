@@ -1,19 +1,20 @@
 package main
 
 import (
-	"encoding/json"
-	"log"
-	"net/http"
+    "net/http"
+
+    "github.com/labstack/echo/v4"
 )
 
 func main() {
-	fs := http.FileServer(http.Dir("web"))
-	http.Handle("/", fs)
+    e := echo.New()
 
-	http.HandleFunc("/api/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(map[string]string{"message": "pong"})
-	})
+    // Serve static files from the web directory
+    e.Static("/", "web")
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+    e.GET("/api/ping", func(c echo.Context) error {
+        return c.JSON(http.StatusOK, map[string]string{"message": "pong"})
+    })
+
+    e.Logger.Fatal(e.Start(":8080"))
 }
