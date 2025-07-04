@@ -26,5 +26,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: xianwei2022/linacc:latest

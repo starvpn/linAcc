@@ -15,3 +15,11 @@
 3. 在浏览器中访问 [http://localhost:8080](http://localhost:8080) 查看页面。
 
 服务器提供示例接口 `/api/ping`，返回 `{"message": "pong"}`。Layui 资源通过 CDN 加载，可根据需要在 `web` 目录中自定义页面。
+
+## 构建 Docker 镜像
+
+使用 [Docker Buildx](https://docs.docker.com/buildx/working-with-buildx/) 可生成多架构镜像：
+
+```bash
+docker buildx build --platform linux/amd64,linux/arm64 -t xianwei2022/linacc:latest .
+```
