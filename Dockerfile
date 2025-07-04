@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.20 AS builder
+FROM --platform=$BUILDPLATFORM golang:1.20 AS builder
 WORKDIR /src
 
 # cache dependencies
@@ -11,9 +11,11 @@ RUN go mod download
 # copy source
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /app/linacc ./cmd/server
+ARG TARGETOS
+ARG TARGETARCH
+RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build -o /app/linacc ./cmd/server
 
-FROM alpine:latest
+FROM --platform=$TARGETPLATFORM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/linacc ./linacc
 COPY --from=builder /src/web ./web
