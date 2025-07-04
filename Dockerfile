@@ -5,11 +5,12 @@ WORKDIR /src
 
 # cache dependencies
 COPY go.mod ./
-# download dependencies (go.sum will be generated if needed)
+# download dependencies (generates go.sum if missing)
 RUN go mod download
 
-# copy source
-COPY . .
+# copy source without overwriting go.sum
+COPY cmd ./cmd
+COPY web ./web
 
 ARG TARGETOS
 ARG TARGETARCH
