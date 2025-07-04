@@ -1,11 +1,14 @@
 # linAcc
 
-本项目演示如何使用标准库 `net/http` 以及 [Layui](https://www.layui.com/) 页面框架，构建一个简单的 Go 应用。
+本项目演示如何使用 [Echo](https://echo.labstack.com/) 与 [Layui](https://www.layui.com/) 页面框架，构建一个简单的 Go 应用。
 
 ## 快速开始
 
 1. **安装依赖**
-   该示例仅依赖 Go 标准库，无需额外下载依赖。
+   需要安装 [Echo](https://echo.labstack.com/)：
+   ```bash
+   go get github.com/labstack/echo/v4
+   ```
 
 2. **启动服务器**
    ```bash
